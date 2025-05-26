@@ -1,59 +1,61 @@
-# CountryAppStandalone
+# Explorador Global de Países 🌍
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+Una aplicación web interactiva desarrollada con Angular y TypeScript que permite a los usuarios explorar información detallada sobre países de todo el mundo. La aplicación consume la API de RestCountries para ofrecer una experiencia rica y actualizada
 
-## Development server
+## Funcionalidades Implementadas ✨
 
-To start a local development server, run:
+- Visualización Dinámica de Países: Se presenta una lista completa de países, cada uno mostrado en una tarjeta (<app-country-card>) con        información esencial:
+    Nombre común del país.
+    Bandera (imagen SVG).
+    Capital(es).
+    Población (formateada).
+    Lenguajes principales.
+  
+- Modal Interactivo con Detalles del País: Al hacer clic en cualquier tarjeta de país, se despliega un modal (<app-country-modal>) que         muestra información más completa:
+    Nombre oficial y nombres nativos.
+    Escudo de armas (si está disponible).
+    Monedas, continentes, zonas horarias, prefijo telefónico.
+    Enlaces directos a Google Maps y OpenStreetMaps.
+    Cierre del modal mediante botón, tecla Escape o clic en el overlay.
+  
+- (Próximamente) Búsqueda de Países: Funcionalidad para buscar países por su nombre.
+  
+- (Próximamente) Filtrado por Región: Capacidad de filtrar la lista de países según la región seleccionada.
+  
+- Diseño Responsivo: La interfaz se adapta a diferentes tamaños de pantalla, ofreciendo una buena experiencia de usuario en dispositivos  móviles y de escritorio.
+  
+- Animaciones Suaves: El modal utiliza animaciones de Angular (@angular/animations) para una experiencia de apertura y cierre más fluida.
 
-```bash
-ng serve
-```
+## Enlace de la aplicación desplegada 🌐
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Puedes probar la aplicación en el siguiente enlace:  
+[**Ver aplicación en vivo**](https://prueba-tecnica-rindegastos.netlify.app/)
 
-## Code scaffolding
+## Stack Tecnológico y Conceptos Aplicados 🚀
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Angular 19:
+- Componentes Standalone: La aplicación está estructurada con componentes, directivas y pipes standalone, reduciendo la necesidad de   NgModule y simplificando la gestión de dependencias.
+- Arquitectura Basada en Componentes: Clara separación de responsabilidades entre componentes (ej. CountryListComponent, CountryCardComponent, CountryModalComponent).
+- Servicios e Inyección de Dependencias: El CountryService encapsula la lógica de obtención de datos de la API y es inyectado donde se necesita.
+- Enrutamiento (Angular Router): Configuración de rutas para cargar componentes, con implementación de Lazy Loading a nivel de componente (loadComponent) para optimizar la carga inicial.
+- Data Binding: Uso de interpolación, property binding ([]), event binding (()).
+- Directivas Estructurales: *ngIf para renderizado condicional y *ngFor para iterar sobre listas, optimizado con trackBy.
+- RxJS: Utilización de Observables para manejar las respuestas asíncronas del HttpClient y gestión de suscripciones para prevenir memory leaks (con takeUntil y async pipe donde aplique).
+- HttpClientModule (proveído mediante provideHttpClient): Para realizar peticiones HTTP a la API externa.
+- Optimización de Change Detection: Uso de ChangeDetectionStrategy.OnPush en componentes que dependen solo de sus inputs para mejorar el rendimiento.
+- @angular/animations: Para transiciones suaves en la interfaz de usuario.
+TypeScript:
+- Tipado Fuerte: Definición de interfaces (ej. Country, Name, Flags) para los modelos de datos, asegurando la integridad y facilitando el desarrollo.
+ -Uso de características modernas de TypeScript para un código más robusto y mantenible.
+- SCSS: Para estilos más organizados y potentes, aprovechando variables, anidamiento y mixins.
+- HTML5 Semántico y Accesibilidad (a11y): Consideraciones básicas para una correcta estructura y navegabilidad (ej. roles, tabindex).
+- API de RestCountries: Fuente de datos externa para la información de los países.
+- Git y GitHub: Para el control de versiones y la gestión del código fuente
 
-```bash
-ng generate component component-name
-```
+  ## Ejecutar el programa localmente 🛠️
+  git clone https://github.com/MarcoAndresSilva/country-app-standalone.git
+  cd country-app-standalone
+  npm install
+  ng serve
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  
