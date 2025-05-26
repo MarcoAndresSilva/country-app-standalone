@@ -29,7 +29,7 @@ Una aplicación web interactiva desarrollada con Angular y TypeScript que permit
 ## Enlace de la aplicación desplegada 🌐
 
 Puedes probar la aplicación en el siguiente enlace:  
-[**Ver aplicación en vivo**](https://prueba-tecnica-rindegastos.netlify.app/)
+[**Ver aplicación en vivo**](https://country-app-standalone.netlify.app)
 
 ## Stack Tecnológico y Conceptos Aplicados 🚀
 
