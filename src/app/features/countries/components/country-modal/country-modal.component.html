@@ -1,0 +1,51 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="close()"> <!-- El overlay que cubre la página -->
+  <div 
+  class="modal-content" 
+  (click)="onModalContentClick($event)" 
+  *ngIf="country"
+  [@modalAnimation]>
+  
+  <!-- Contenido del modal -->
+    <button class="modal-close-button" (click)="close()" aria-label="Cerrar modal">×</button>
+    
+    <div class="modal-header">
+      <img [src]="country.flags.svg" [alt]="'Bandera de ' + country.name.common" class="modal-flag">
+      <h2>{{ country.name.common }}</h2>
+      <p class="official-name">{{ getOfficialName(country.name) }}</p>
+    </div>
+
+    <div class="modal-body">
+      <div class="detail-grid">
+        <div class="detail-item"><span class="label">Capital(es):</span> {{ country.capital && country.capital.length > 0 ? country.capital.join(', ') : 'N/A' }}</div>
+        <div class="detail-item"><span class="label">Región:</span> {{ country.region }}</div>
+        <div class="detail-item"><span class="label">Subregión:</span> {{ country.subregion || 'N/A' }}</div>
+        <div class="detail-item"><span class="label">Población:</span> {{ country.population | number }}</div>
+        <div class="detail-item"><span class="label">Lenguajes:</span> {{ getLanguages(country.languages) }}</div>
+        <div class="detail-item"><span class="label">Monedas:</span> {{ getCurrencies(country.currencies) }}</div>
+        <div class="detail-item"><span class="label">Continentes:</span> {{ country.continents.join(', ') || 'N/A' }}</div>
+        <!-- <div class="detail-item"><span class="label">Gentilicios (Eng):</span> {{ getDemonyms(country.demonyms) }}</div> -->
+        <div class="detail-item"><span class="label">Zonas Horarias:</span> {{ country.timezones.join(', ') || 'N/A' }}</div>
+        <div class="detail-item"><span class="label">Código CCA3:</span> {{ country.cca3 }}</div>
+        <div class="detail-item"><span class="label">Prefijo Tel.:</span> {{ country.idd?.root }}{{ country.idd?.suffixes?.[0] || '' }}</div>
+        <!-- Puedes añadir más campos aquí -->
+      </div>
+
+      <div class="coat-of-arms-section" *ngIf="country.coatOfArms && (country.coatOfArms.svg || country.coatOfArms.png)">
+        <h3>Escudo de Armas</h3>
+        <img 
+          [src]="country.coatOfArms.svg || country.coatOfArms.png!"
+          [alt]="'Escudo de ' + country.name.common"
+          class="modal-coat-of-arms">
+      </div>
+
+      <div class="maps-links">
+        <a [href]="country.maps.googleMaps" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
+        <a [href]="country.maps.openStreetMaps" target="_blank" rel="noopener noreferrer">Ver en OpenStreetMaps</a>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button (click)="close()">Cerrar</button>
+    </div>
+  </div>
+</div>

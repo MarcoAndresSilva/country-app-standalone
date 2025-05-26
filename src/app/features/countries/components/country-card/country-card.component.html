@@ -1,0 +1,17 @@
+<!-- src/app/features/countries/components/country-card/country-card.component.html -->
+<article class="card" *ngIf="country"> <!-- Usamos *ngIf para asegurarnos que country tiene datos antes de intentar acceder a sus propiedades -->
+    <div class="card-flag-container">
+      <img 
+        class="card-flag" 
+        [src]="country.flags.svg" 
+        [alt]="country.flags.alt || ('Bandera de ' + country.name.common)"
+        loading="lazy">
+    </div>
+    <div class="card-content">
+      <h2 class="card-title">{{ country.name.common }}</h2>
+      <p><span class="label">Población:</span> {{ country.population | number }}</p>
+      <p><span class="label">Región:</span> {{ country.region }}</p>
+      <p><span class="label">Capital:</span> {{ country.capital && country.capital.length > 0 ? country.capital.join(', ') : 'N/A' }}</p>
+      <p><span class="label">Lenguaje(s):</span> {{ getLanguages(country.languages) }}</p>
+    </div>
+  </article>

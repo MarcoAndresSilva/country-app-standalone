@@ -1,0 +1,142 @@
+:host {
+  // Estilos para el elemento anfitrión si fueran necesarios,
+  // pero el modal se controla más por sus clases internas.
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); // Fondo oscuro semitransparente
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; // Asegurar que esté por encima de otros contenidos
+}
+
+.modal-content {
+   background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+  .modal-overlay.open { // Animación cuando el overlay tiene la clase 'open' (o cuando *ngIf="isOpen" es true)
+     transform: scale(1);
+     opacity: 1;
+  }
+
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #888;
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+
+  .modal-flag {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  h2 {
+    margin: 5px 0;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  .official-name {
+    font-size: 0.9rem;
+    color: #777;
+  }
+}
+
+.modal-body {
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Columnas responsivas
+    gap: 10px 20px; // Espacio entre filas y columnas
+    margin-bottom: 20px;
+  }
+  .detail-item {
+    font-size: 0.95rem;
+    color: #444;
+    .label {
+      font-weight: 600;
+      color: #222;
+      margin-right: 5px;
+    }
+  }
+  .coat-of-arms-section {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+    .modal-coat-of-arms {
+      max-width: 150px;
+      max-height: 150px;
+    }
+  }
+  .maps-links {
+    margin-top: 20px;
+    text-align: center;
+    a {
+      margin: 0 10px;
+      color: #007bff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.modal-footer {
+  text-align: right;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+
+  button {
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #5a6268;
+    }
+  }
+}
