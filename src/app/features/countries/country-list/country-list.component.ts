@@ -21,17 +21,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   error: string | null = null;
 
-   _selectedCountry: Country | null = null; // Cambiamos el nombre para usar getter/setter
-  get selectedCountry(): Country | null {
-    return this._selectedCountry;
-  }
-  set selectedCountry(value: Country | null) {
-    console.log('----- selectedCountry CAMBIANDO -----');
-    console.log('Valor anterior:', this._selectedCountry?.name?.common || this._selectedCountry);
-    console.log('Nuevo valor:', value?.name?.common || value);
-    try { throw new Error("Stack trace para selectedCountry"); } catch (e: any) { console.warn(e.stack); } // Para ver quién lo llama
-    this._selectedCountry = value;
-  }
+  selectedCountry: Country | null = null; 
 
   private destroy$ = new Subject<void>();
 
@@ -39,7 +29,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
   console.log('CountryListComponent constructor');
   }
     ngOnInit(): void{
-       console.log('CountryListComponent: ngOnInit');
+      console.log('CountryListComponent: ngOnInit');
       this.loadCountries();
     }
 
@@ -66,7 +56,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
           },
         });
     }
-     // Helper para mostrar lenguajes (lo usaremos en la card luego, pero es útil tenerlo)
+
   getLanguages(languages?: Languages): string {
     if (!languages) {
       return 'N/A';

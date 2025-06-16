@@ -18,14 +18,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       })),
       state('*', style({ // '*' es el estado cuando el elemento está en el DOM (*ngIf=true)
         opacity: 1,
-        transform: 'scale(1) translateY(0)' // Tamaño y posición normal
+        transform: 'scale(1) translateY(0)'
       })),
-      transition('void <=> *', [ // Transición entre 'void' y cualquier otro estado (y viceversa)
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)') // Duración y curva de aceleración
+      transition('void <=> *', [
+        animate('225ms cubic-bezier(0.4, 0.0, 0.6, 1)')
       ])
     ])
   ]
 })
+
 export class CountryModalComponent {
     @Input() country: Country | null = null;
     @Input() isOpen: boolean = false;
@@ -92,12 +93,6 @@ ngOnChanges(changes: SimpleChanges): void {
     return Object.values(languages).join(', ');
   }
 
-  getDemonyms(demonyms?: any): string { // 'any' porque la estructura puede variar
-    if (!demonyms || !demonyms.eng) return 'N/A';
-    return `Fem: ${demonyms.eng.f}, Masc: ${demonyms.eng.m}`;
-  }
-
-  // Evita que el clic dentro del contenido del modal cierre el modal
   onModalContentClick(event: MouseEvent): void {
     event.stopPropagation();
   }

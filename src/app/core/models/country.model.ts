@@ -32,18 +32,13 @@ export interface Name {
   // Esta es la interfaz principal para un país
   export interface Country {
     name: Name;
-    cca3: string; // Un código de 3 letras que puede ser útil como ID único
-    currencies?: { [key: string]: CurrencyInfo }; // Ej: { "USD": { name: "United States dollar", symbol: "$" } }
-    capital?: string[]; // Puede tener múltiples capitales o ninguna
-    region: string;    // Requerido para el filtro de la Parte 3
-    subregion?: string;
-    languages?: Languages;
+    cca3: string;
+    currencies: { [key: string]: CurrencyInfo };
+    capital: string[];
+    region: string;
+    languages: Languages;
     population: number;
-    flags: Flags;        // Objeto con URLs para las imágenes de las banderas
-    coatOfArms?: CoatOfArms; // Escudo, es opcional
-    // Otros campos que podríamos necesitar para el modal (añadir según sea necesario):
+    flags: Flags;
+    coatOfArms: CoatOfArms;
     continents: string[];
-    timezones: string[];
-    idd?: { root?: string; suffixes?: string[] }; // Prefijo telefónico internacional
-    maps: { googleMaps: string; openStreetMaps: string; };
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Country } from '../models/country.model';
 
@@ -8,19 +8,16 @@ import { Country } from '../models/country.model';
 })
 export class CountryService {
   private apiUrl = 'https://restcountries.com/v3.1/all';
+  private infoCountries = ['name', 'cca3', 'currencies', 'capital', 'region', 'languages', 'population', 'flags', 'coatOfArms', 'continents'].join(',');
 
   constructor(private http: HttpClient) { }
 
-  getAllCountries(): Observable<Country[]> {
-    console.log('Fetching all countries from API (Standalone App)...');
-    return this.http.get<Country[]>(this.apiUrl).pipe(
-      tap(countries => {
-        if (countries && countries.length > 0) {
-          console.log(`Fetched ${countries.length} countries. First country:`, countries[0]);
-        } else {
-          console.log('Fetched 0 countries or API response is not an array.');
-        }
-      })
+  getAllCountries(fields?: string[]): Observable<Country[]> {
+    const list = (fields && fields.length) ? fields.slice().join(',') : this.infoCountries;
+    const params = new HttpParams().set('fields', list);
+    return this.http.get<Country[]>(this.apiUrl, { params }).pipe(
+      tap(countries => console.log(`CountryService: Received ${countries?.length} countries from service, paises com campos: [${list}]`)
+      )
     );
-  }
+   }
 }
