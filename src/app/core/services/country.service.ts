@@ -19,5 +19,5 @@ export class CountryService {
       tap(countries => console.log(`CountryService: Received ${countries?.length} countries from service, paises com campos: [${list}]`)
       )
     );
-   }
+  }
 }
