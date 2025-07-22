@@ -3,6 +3,16 @@
       <h1>Explorador de Países del Mundo</h1>
     </header>
   
+    <div class="search-container">
+      <input type="text"
+        class="search-term"
+        placeholder="Buscar países por nombre" 
+        [(ngModel)]="searchTerm"
+        (keyup.enter)="onSearch()"
+      >
+      <button class="search-button" (click)="onSearch()">Buscar</button>
+    </div>
+
     <main class="content-area">
       <div *ngIf="isLoading" class="loading-indicator">
         <p>Cargando información de los países...</p>
