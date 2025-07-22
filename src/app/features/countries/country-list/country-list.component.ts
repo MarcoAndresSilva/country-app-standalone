@@ -18,9 +18,14 @@ import { CountryModalComponent } from '../components/country-modal/country-modal
 })
 
 export class CountryListComponent implements OnInit, OnDestroy {
+
+  allCountries: Country[] = []; // Para almacenar todos los paises que llegaron en la respuesta de la API
+  countriesToDisplay: Country[] = []; // Para almacenar los paises que se muestran en la interfaz
   countries: Country[] = [];
   isLoading: boolean = true;
   error: string | null = null;
+
+  searchTerm: string = ''; // Para almacenar el texto de búsqueda
 
   selectedCountry: Country | null = null; 
 
@@ -44,7 +49,8 @@ export class CountryListComponent implements OnInit, OnDestroy {
         )
         .subscribe({
           next: (data) => {
-            this.countries = data;
+            this.allCountries = data;
+            this.countriesToDisplay = data;
             this.isLoading = false;
           },
           error: (error) => {
