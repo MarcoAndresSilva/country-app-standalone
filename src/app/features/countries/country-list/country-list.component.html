@@ -25,9 +25,9 @@
         <button (click)="loadCountries()">Reintentar</button>
       </div>
   
-      <div *ngIf="!isLoading && !error && countries.length > 0" class="countries-grid">
+      <div *ngIf="!isLoading && !error && countriesToDisplay.length > 0" class="countries-grid">
         <app-country-card
-          *ngFor="let country of countries; trackBy: trackByCca3" 
+          *ngFor="let country of countriesToDisplay; trackBy: trackByCca3" 
           [country]="country"
           (click)="openCountryModal(country)"
           class="country-grid-item"
@@ -38,8 +38,8 @@
         </app-country-card>
       </div>
   
-      <div *ngIf="!isLoading && !error && countries.length === 0" class="no-data-message">
-        <p>No se encontraron países para mostrar.</p>
+      <div *ngIf="!isLoading && !error && countriesToDisplay.length === 0" class="no-data-message">
+        <p>No se encontraron países que coincidan con tu busqueda.</p>
       </div>
     </main>
     <app-country-modal
