@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subject} from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
+import { FormsModule } from '@angular/forms';
 
 import { Country, Languages } from '../../../core/models/country.model';
 import { CountryService } from '../../../core/services/country.service';
@@ -11,7 +12,7 @@ import { CountryModalComponent } from '../components/country-modal/country-modal
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [CommonModule, CountryCardComponent, CountryModalComponent ],
+  imports: [CommonModule, CountryCardComponent, CountryModalComponent, FormsModule ],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss'
 })

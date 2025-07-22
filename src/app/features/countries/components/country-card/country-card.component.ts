@@ -11,7 +11,7 @@ import { Country, Languages } from '../../../../core/models/country.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountryCardComponent implements OnInit {
-  @Input() country!: Country;
+  @Input() country!: Country; // le permite recibir el input desde el padre
 
   constructor() { }
 
