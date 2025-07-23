@@ -75,6 +75,10 @@ export class CountryListComponent implements OnInit, OnDestroy {
     return country.cca3;
   }
 
+  onSearch(): void {
+    this.countriesToDisplay = this.allCountries.filter(country => country.name.common.toLowerCase().includes(this.searchTerm.toLowerCase()));
+  }
+
   openCountryModal(country: Country): void {
   console.log(`CountryListComponent: Opened modal for country ${country.name.common}`);
   this.selectedCountry = country;
