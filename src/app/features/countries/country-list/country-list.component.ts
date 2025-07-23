@@ -76,7 +76,14 @@ export class CountryListComponent implements OnInit, OnDestroy {
   }
 
   onSearch(): void {
-    this.countriesToDisplay = this.allCountries.filter(country => country.name.common.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    if(!this.searchTerm.trim()) {
+      this.countriesToDisplay = this.allCountries;
+      return;
+    }
+
+    const lowerCaseSearchTerm = this.searchTerm.toLowerCase().trim();
+    this.countriesToDisplay = this.allCountries.filter(country => 
+      country.name.common.toLowerCase().includes(lowerCaseSearchTerm) || country.name.official.toLowerCase().includes(lowerCaseSearchTerm));
   }
 
   openCountryModal(country: Country): void {
