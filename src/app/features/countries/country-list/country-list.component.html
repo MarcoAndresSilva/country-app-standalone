@@ -1,47 +1,55 @@
-<div class="page-container">
+<header class="page-container">
   
-    <div class="search-container">
-      <input type="text"
-        class="search-term"
-        placeholder="Buscar países por nombre" 
+</header>   
+
+  <div class="filter-container">
+    <mat-form-field class="search-form-field" appearance="outline">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>Buscar país...</mat-label>
+      <input 
+        matInput
+        type="text" 
+        placeholder="Busca por nombre"
         [(ngModel)]="searchTerm"
-        (keyup.enter)="onSearch()"
-      >
-      <button class="search-button" (click)="onSearch()">Buscar</button>
+        (keyup.enter)="onSearch()">
+    </mat-form-field>
+
+    <div class="action-container">
+      <button mat-flat-button color="primary" (click)="onSearch()"><mat-icon>search</mat-icon>Search</button>
+    </div>
+  </div>
+
+  <main class="content-area">
+    <div *ngIf="isLoading" class="loading-indicator">
+      <p>Cargando información de los países...</p>
+      <!-- TO DO - LOADING INDICATOR -->
     </div>
 
-    <main class="content-area">
-      <div *ngIf="isLoading" class="loading-indicator">
-        <p>Cargando información de los países...</p>
-        <!-- TO DO - LOADING INDICATOR -->
-      </div>
-  
-      <div *ngIf="error" class="error-message">
-        <h2>¡Oops! Algo salió mal.</h2>
-        <p>{{ error }}</p>
-        <button (click)="loadCountries()">Reintentar</button>
-      </div>
-  
-      <div *ngIf="!isLoading && !error && countriesToDisplay.length > 0" class="countries-grid">
-        <app-country-card
-          *ngFor="let country of countriesToDisplay; trackBy: trackByCca3" 
-          [country]="country"
-          (click)="openCountryModal(country)"
-          class="country-grid-item"
-          role="button" 
-          tabindex="0"
-          (keydown.enter)="openCountryModal(country)"
-          (keydown.space)="openCountryModal(country)"> 
-        </app-country-card>
-      </div>
-  
-      <div *ngIf="!isLoading && !error && countriesToDisplay.length === 0" class="no-data-message">
-        <p>No se encontraron países que coincidan con tu busqueda.</p>
-      </div>
-    </main>
-    <app-country-modal
-      [country]="selectedCountry"
-      [isOpen]="!!selectedCountry" 
-      (closeModalEvent)="closeCountryModal()">
-    </app-country-modal>
-  </div>
+    <div *ngIf="error" class="error-message">
+      <h2>¡Oops! Algo salió mal.</h2>
+      <p>{{ error }}</p>
+      <button (click)="loadCountries()">Reintentar</button>
+    </div>
+
+    <div *ngIf="!isLoading && !error && countriesToDisplay.length > 0" class="countries-grid">
+      <app-country-card
+        *ngFor="let country of countriesToDisplay; trackBy: trackByCca3" 
+        [country]="country"
+        (click)="openCountryModal(country)"
+        class="country-grid-item"
+        role="button" 
+        tabindex="0"
+        (keydown.enter)="openCountryModal(country)"
+        (keydown.space)="openCountryModal(country)"> 
+      </app-country-card>
+    </div>
+
+    <div *ngIf="!isLoading && !error && countriesToDisplay.length === 0" class="no-data-message">
+      <p>No se encontraron países que coincidan con tu busqueda.</p>
+    </div>
+  </main>
+  <app-country-modal
+    [country]="selectedCountry"
+    [isOpen]="!!selectedCountry" 
+    (closeModalEvent)="closeCountryModal()">
+  </app-country-modal>

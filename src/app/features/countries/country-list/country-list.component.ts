@@ -9,10 +9,26 @@ import { CountryService } from '../../../core/services/country.service';
 import { CountryCardComponent } from '../components/country-card/country-card.component';
 import { CountryModalComponent } from '../components/country-modal/country-modal.component';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select'; // Para la Parte 3
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [CommonModule, CountryCardComponent, CountryModalComponent, FormsModule ],
+  imports: [
+    CommonModule,
+    CountryCardComponent,
+    CountryModalComponent,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss'
 })

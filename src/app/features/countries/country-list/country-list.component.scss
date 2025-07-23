@@ -121,8 +121,34 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 
-  &:hover {
-    background-color: #0056b3;
+    &:hover {
+      background-color: #0056b3;
+    }
   }
-}
+  
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap; // Para que se ajuste en pantallas pequeñas
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .search-form-field {
+    width: 100%;
+    max-width: 400px; // Limitar el ancho del buscador
+  }
+  .mat-mdc-form-field {
+    width: 100%; // Hacer que los form-fields sean responsivos
+  }
+  .actions-container {
+    display: flex;
+    gap: 10px;
+  }
+  // Ajusta la posición del grid de países
+.countries-grid {
+    margin-top: 0; // Ya tenemos padding en filters-container
+  }
 }
