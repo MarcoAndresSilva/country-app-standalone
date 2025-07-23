@@ -1,0 +1,29 @@
+// src/app/core/components/header/header.component.scss
+.app-header {
+    background-color: var(--header-bg, #ffffff); // Usaremos variables CSS para el theming
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 1rem 0;
+    transition: background-color 0.3s ease;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--text-color, #111517);
+    }
+
+    .theme-switcher {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+}
