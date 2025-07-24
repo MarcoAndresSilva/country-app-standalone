@@ -88,10 +88,18 @@ export class CountryListComponent implements OnInit, OnDestroy {
       if(this.selectedRegion){
         filteredCountries = filteredCountries.filter(country => country.region === this.selectedRegion);
       };
+
+      if(this.searchTerm.trim()) {
+        const lowerCaseSearchTerm = this.searchTerm.toLowerCase().trim();
+        filteredCountries = filteredCountries.filter(country =>
+        country.name.common.toLowerCase().includes(lowerCaseSearchTerm) || country.name.official.toLowerCase().includes(lowerCaseSearchTerm)
+      )}
+      this.countriesToDisplay = filteredCountries;
     }
 
     resetFilters(): void {
       this.selectedRegion = '';
+      this.searchTerm = '';
       this.applyFilters();
     }
 
@@ -104,17 +112,6 @@ export class CountryListComponent implements OnInit, OnDestroy {
 
     trackByCca3(index: number, country: Country): string {
       return country.cca3;
-    }
-
-    onSearch(): void {
-      if(!this.searchTerm.trim()) {
-        this.countriesToDisplay = this.allCountries;
-        return;
-      }
-
-      const lowerCaseSearchTerm = this.searchTerm.toLowerCase().trim();
-      this.countriesToDisplay = this.allCountries.filter(country => 
-        country.name.common.toLowerCase().includes(lowerCaseSearchTerm) || country.name.official.toLowerCase().includes(lowerCaseSearchTerm));
     }
 
     openCountryModal(country: Country): void {

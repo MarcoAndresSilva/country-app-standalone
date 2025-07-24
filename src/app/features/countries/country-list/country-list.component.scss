@@ -1,154 +1,95 @@
+/* src/app/features/countries/country-list/country-list.component.scss */
+
+// Variables para fácil personalización
+$content-max-width: 1200px;
+$content-padding: 20px;
+
+// Contenedor principal de la página, sin max-width para que los filtros puedan extenderse si es necesario
 .page-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-  }
-  
-  .page-header {
-    text-align: center;
-    margin-bottom: 30px;
-    h1 {
-      color: #333;
-      font-size: 2.5em;
-    }
-  }
-  
-  .loading-indicator,
-  .error-message,
-  .no-data-message {
-    text-align: center;
-    padding: 40px 20px;
-    font-size: 1.2em;
-    color: #555;
-    border: 1px dashed #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .error-message {
-    color: #d8000c;
-    background-color: #ffdddd;
-    border-color: #ffbaba;
-    h2 {
-      margin-top: 0;
-      color: #d8000c;
-    }
-    button {
-      padding: 8px 15px;
-      margin-top: 15px;
-      background-color: #d8000c;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      &:hover {
-        background-color: #b00000;
-      }
-    }
-  }
-  
-  .countries-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    .country-grid-item {
-      cursor: pointer;
-      &:focus-visible {
-        outline: 2px solid dodgerblue;
-        outline-offset: 2px;
-        border-radius: 8px;
-      }
-  }
-  
-  .country-item-placeholder {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    text-align: left;
-  
-    h2 {
-      margin-top: 0;
-      font-size: 1.5em;
-      color: #2c3e50;
-    }
-    p {
-      font-size: 0.95em;
-      line-height: 1.5;
-      color: #34495e;
-      strong {
-        color: #2c3e50;
-      }
-    }
-  }
+  // Lo dejamos casi vacío para que no restrinja a sus hijos
+}
 
-  .search-container {
+// Contenedor de los filtros
+.filters-container {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap; // Permite que los elementos se reordenen en pantallas pequeñas
+  justify-content: space-between; // Alinea los elementos a los extremos
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  gap: 10px;
-  width: 100%;
-  max-width: 600px; // Limitar el ancho en pantallas grandes
-  margin-left: auto;
-  margin-right: auto;
-}
-.search-input {
-  flex-grow: 1; // Para que ocupe el espacio disponible
-  padding: 12px 15px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-
-  &:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
-  }
+  gap: 20px;
+  
+  // Ocupa el ancho del grid de países para alineación visual
+  max-width: $content-max-width;
+  margin: 20px auto 40px auto; // Margen superior, horizontal auto para centrar, inferior
+  padding: 0 $content-padding;
 }
 
-.search-button {
-  padding: 12px 20px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+// Estilos específicos para los componentes de Material dentro del contenedor
+.search-form-field {
+  flex: 1 1 400px; // Flex-grow: 1, Flex-shrink: 1, Flex-basis: 400px. Permite crecer y encogerse.
+}
 
-    &:hover {
-      background-color: #0056b3;
+.region-select-field {
+  flex: 1 1 200px; // Crece y se encoge, con una base más pequeña.
+}
+
+// Para que los form-fields no tengan un espacio extra debajo que los desalinea
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  height: 0;
+  overflow: hidden;
+}
+
+// Contenedor del grid de países
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px; // Un poco más de espacio entre cards
+
+  // Alinear con los filtros
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding: 0 $content-padding;
+
+  .country-grid-item {
+    cursor: pointer;
+    &:focus-visible { // Mejor accesibilidad para navegación con teclado
+      outline: 2px solid dodgerblue;
+      outline-offset: 2px;
+      border-radius: 8px;
     }
   }
-  
-  .filters-container {
-    display: flex;
-    flex-wrap: wrap; // Para que se ajuste en pantallas pequeñas
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-    max-width: 1200px;
-    margin: 0 auto;
+}
+
+// Estilos para los mensajes de carga, error y "no hay datos"
+.loading-indicator,
+.error-message,
+.no-data-message {
+  text-align: center;
+  padding: 40px $content-padding;
+  font-size: 1.2em;
+  color: #555;
+  // Centrado dentro del ancho del contenido
+  max-width: $content-max-width;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: #d8000c;
+  background-color: #ffdddd;
+  border: 1px solid #ffbaba;
+  border-radius: 8px;
+  h2 {
+    margin-top: 0;
   }
-  .search-form-field {
-    width: 100%;
-    max-width: 400px; // Limitar el ancho del buscador
-  }
-  .mat-mdc-form-field {
-    width: 100%; // Hacer que los form-fields sean responsivos
-  }
-  .actions-container {
-    display: flex;
-    gap: 10px;
-  }
-  // Ajusta la posición del grid de países
-.countries-grid {
-    margin-top: 0; // Ya tenemos padding en filters-container
+  button {
+    padding: 8px 15px;
+    margin-top: 15px;
+    background-color: #d8000c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      background-color: #b00000;
+    }
   }
 }

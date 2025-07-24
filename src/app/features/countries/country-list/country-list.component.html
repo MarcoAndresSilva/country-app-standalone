@@ -3,7 +3,7 @@
   
 </header>    -->
 
-  <div class="filter-container">
+  <div class="filters-container">
 
     <mat-form-field class="search-form-field" appearance="outline">
       <mat-icon matPrefix>search</mat-icon>
@@ -13,12 +13,8 @@
         type="text" 
         placeholder="Ej: chile, colombia, argentina..."
         [(ngModel)]="searchTerm"
-        (keyup)="applyFilters()"
         (keyup.enter)="applyFilters()"
       >
-      <button matSuffix mat-icon-button (click)="onSearch()">
-        <mat-icon>search</mat-icon>
-      </button>
     </mat-form-field>
 
     <mat-form-field class="region-select-field" appearance="outline">
@@ -31,10 +27,10 @@
       </mat-select>
     </mat-form-field>
 
-      <button mat-stroked-button (click)="resetFilters()">
-        <mat-icon>refresh</mat-icon>
-        Reset
-      </button>
+    <button mat-stroked-button (click)="resetFilters()">
+      <mat-icon>refresh</mat-icon>
+      Reset
+    </button>
 
   </div>
 
