@@ -1,23 +1,41 @@
 <div class="page-container">
-  <header class="page-header">
+  <!-- <header class="page-header">
   
-</header>   
+</header>    -->
 
   <div class="filter-container">
+
     <mat-form-field class="search-form-field" appearance="outline">
       <mat-icon matPrefix>search</mat-icon>
       <mat-label>Buscar país...</mat-label>
       <input 
         matInput
         type="text" 
-        placeholder="Busca por nombre"
+        placeholder="Ej: chile, colombia, argentina..."
         [(ngModel)]="searchTerm"
-        (keyup.enter)="onSearch()">
+        (keyup)="applyFilters()"
+        (keyup.enter)="applyFilters()"
+      >
+      <button matSuffix mat-icon-button (click)="onSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-form-field>
 
-    <div class="action-container">
-      <button mat-flat-button color="primary" (click)="onSearch()"><mat-icon>search</mat-icon>Search</button>
-    </div>
+    <mat-form-field class="region-select-field" appearance="outline">
+      <mat-label>Filtrar por Región</mat-label>
+      <mat-select [(ngModel)]="selectedRegion" (selectionChange)="applyFilters()">
+        <mat-option [value]="''">Todas las regiones</mat-option> <!-- Opción para limpiar el filtro -->
+        <mat-option *ngFor="let region of regions" [value]="region">
+          {{ region }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+      <button mat-stroked-button (click)="resetFilters()">
+        <mat-icon>refresh</mat-icon>
+        Reset
+      </button>
+
   </div>
 
   <main class="content-area">

@@ -43,7 +43,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
 
   searchTerm: string = ''; // Para almacenar el texto de búsqueda
   selectedRegion: string = ''; // para el valor del mat-select
-  region: string[] = []; // para las opciones del <mat-select>
+  regions: string[] = []; // para las opciones del <mat-select>
 
   selectedCountry: Country | null = null; 
 
@@ -69,7 +69,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
           next: (data) => {
             this.allCountries = data;
             this.countriesToDisplay = data;
-            this.region = [...new Set(data.map(country => country.region).filter(Boolean))].sort();// generar la lista de regiones unicas a partir de los paises y ordenarlas alfabeticamente
+            this.regions = [...new Set(data.map(country => country.region).filter(Boolean))].sort();// generar la lista de regiones unicas a partir de los paises y ordenarlas alfabeticamente
             this.isLoading = false;
           },
           error: (error) => {
@@ -83,43 +83,55 @@ export class CountryListComponent implements OnInit, OnDestroy {
         });
     }
 
-  getLanguages(languages?: Languages): string {
-    if (!languages) {
-      return 'N/A';
-    }
-    return Object.values(languages).join(', ');
-  }
-
-  trackByCca3(index: number, country: Country): string {
-    return country.cca3;
-  }
-
-  onSearch(): void {
-    if(!this.searchTerm.trim()) {
-      this.countriesToDisplay = this.allCountries;
-      return;
+    applyFilters(): void {
+      let filteredCountries = this.allCountries;
+      if(this.selectedRegion){
+        filteredCountries = filteredCountries.filter(country => country.region === this.selectedRegion);
+      };
     }
 
-    const lowerCaseSearchTerm = this.searchTerm.toLowerCase().trim();
-    this.countriesToDisplay = this.allCountries.filter(country => 
-      country.name.common.toLowerCase().includes(lowerCaseSearchTerm) || country.name.official.toLowerCase().includes(lowerCaseSearchTerm));
-  }
+    resetFilters(): void {
+      this.selectedRegion = '';
+      this.applyFilters();
+    }
 
-  openCountryModal(country: Country): void {
-  console.log(`CountryListComponent: Opened modal for country ${country.name.common}`);
-  this.selectedCountry = country;
-  console.log('selectedCountry ahora es:', this.selectedCountry);
-}
+    getLanguages(languages?: Languages): string {
+      if (!languages) {
+        return 'N/A';
+      }
+      return Object.values(languages).join(', ');
+    }
 
-closeCountryModal(): void {
-  this.selectedCountry = null;
-}
+    trackByCca3(index: number, country: Country): string {
+      return country.cca3;
+    }
+
+    onSearch(): void {
+      if(!this.searchTerm.trim()) {
+        this.countriesToDisplay = this.allCountries;
+        return;
+      }
+
+      const lowerCaseSearchTerm = this.searchTerm.toLowerCase().trim();
+      this.countriesToDisplay = this.allCountries.filter(country => 
+        country.name.common.toLowerCase().includes(lowerCaseSearchTerm) || country.name.official.toLowerCase().includes(lowerCaseSearchTerm));
+    }
+
+    openCountryModal(country: Country): void {
+      console.log(`CountryListComponent: Opened modal for country ${country.name.common}`);
+      this.selectedCountry = country;
+      console.log('selectedCountry ahora es:', this.selectedCountry);
+    }
+
+    closeCountryModal(): void {
+      this.selectedCountry = null;
+    }
 
 
-  ngOnDestroy(): void {
-    console.log('CountryListComponent ngOnDestroy');
-    this.destroy$.next(); // Emite un valor para que takeUntil complete las suscripciones
-    this.destroy$.complete(); // Cierra el Subject
-    console.log('CountryListComponent destroyed and subscriptions cleaned up.');
-  }
+    ngOnDestroy(): void {
+      console.log('CountryListComponent ngOnDestroy');
+      this.destroy$.next(); // Emite un valor para que takeUntil complete las suscripciones
+      this.destroy$.complete(); // Cierra el Subject
+      console.log('CountryListComponent destroyed and subscriptions cleaned up.');
+    }
 }
