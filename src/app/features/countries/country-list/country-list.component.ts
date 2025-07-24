@@ -42,6 +42,8 @@ export class CountryListComponent implements OnInit, OnDestroy {
   error: string | null = null;
 
   searchTerm: string = ''; // Para almacenar el texto de búsqueda
+  selectedRegion: string = ''; // para el valor del mat-select
+  region: string[] = []; // para las opciones del <mat-select>
 
   selectedCountry: Country | null = null; 
 
@@ -67,6 +69,7 @@ export class CountryListComponent implements OnInit, OnDestroy {
           next: (data) => {
             this.allCountries = data;
             this.countriesToDisplay = data;
+            this.region = [...new Set(data.map(country => country.region).filter(Boolean))].sort();// generar la lista de regiones unicas a partir de los paises y ordenarlas alfabeticamente
             this.isLoading = false;
           },
           error: (error) => {
