@@ -1,7 +1,5 @@
-// src/app/core/components/header/header.component.scss
 .app-header {
-    background-color: var(--header-bg, #ffffff); // Usaremos variables CSS para el theming
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background-color: var(--header-bg, #fff);
     padding: 1rem 0;
     transition: background-color 0.3s ease;
 
@@ -14,16 +12,34 @@
         padding: 0 20px;
     }
 
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--text-color, #111517);
+    .title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.75rem;
+        font-weight: 600;
+        font-family: 'Roboto', sans-serif;
+        color: var(--md-sys-color-primary, #1976d2);
+        letter-spacing: 0.5px;
+
+        .title-icon {
+        font-size: 2rem;
+        }
     }
 
     .theme-switcher {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
         cursor: pointer;
+        transition: color 0.2s ease;
+
+        mat-icon {
+        font-size: 24px;
+        color: var(--md-sys-color-secondary, #555);
+        }
+
+        &:hover mat-icon {
+        color: var(--md-sys-color-primary, #1976d2);
+        }
     }
 }
