@@ -19,7 +19,10 @@
 
     <mat-form-field class="region-select-field" appearance="outline">
       <mat-label>Filtrar por Región</mat-label>
-      <mat-select [(ngModel)]="selectedRegion" (selectionChange)="applyFilters()">
+      <mat-select 
+        [(ngModel)]="selectedRegion"
+        (selectionChange)="applyFilters()"
+        >
         <mat-option [value]="''">Todas las regiones</mat-option> <!-- Opción para limpiar el filtro -->
         <mat-option *ngFor="let region of regions" [value]="region">
           {{ region }}
