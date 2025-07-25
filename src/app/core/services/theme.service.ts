@@ -17,9 +17,20 @@ export class ThemeService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
-  getInitialTheme(): Theme {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-theme' : 'light-theme';
+  private getInitialTheme(): Theme {
+    // si hay un tema en el almacenamiento local
+    const storeTheme = localStorage.getItem('app-theme') as Theme;
+    if(storeTheme) {
+      return storeTheme;
+    }
+    // si no hay un tema en el almacenamiento local, se utiliza el tema predeterminado
+    if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark-theme';
+    }
+    return 'light-theme'; // Por defecto
   }
-
 }
+
+
+
 
