@@ -9,7 +9,7 @@ export type Theme = 'light-theme' | 'dark-theme';
 
 export class ThemeService {
 
-  private renderer: Renderer2;
+  private renderer: Renderer2; //para añadir yquitar clases al body de forma dinámica
   private _theme = new BehaviorSubject<Theme>(this.getInitialTheme());
   $theme = this._theme.asObservable();
 

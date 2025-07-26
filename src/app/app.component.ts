@@ -1,15 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './core/components/header/header.component';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, HeaderComponent     ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
   standalone: true,
+  imports: [RouterOutlet, HeaderComponent, ],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent  implements OnInit {
+
   title = 'country-app-standalone';
+
+  constructor(private themeService: ThemeService) {
+
+  }
+  ngOnInit() {
+    this.themeService.initializeTheme();
+  }
 }
