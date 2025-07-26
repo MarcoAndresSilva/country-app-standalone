@@ -29,8 +29,8 @@ export class ThemeService {
     return 'light-theme'; // Por defecto
   }
 
-  initializeTheme(): void {
-    this.setTheme().addClass(this._theme.value);
+  initializeTheme(): void { // inicializar el tema al abrir la app
+    this.setTheme(this._theme.value);
   }
 
   toggleTheme(): void {
@@ -39,10 +39,14 @@ export class ThemeService {
   }
 
   private setTheme(theme: Theme ): void {
-    localStorage.setItem('app-theme', theme);
+    localStorage.setItem('app-theme', theme);// guardar el tema en el localStorage
 
-    this._theme.next(theme);
+    const previusTheme = theme === 'light-theme' ? 'dark-theme' : 'light-theme';// obtener el tema anterior 
+    this.renderer.removeClass(document.body, previusTheme);
     this.renderer.addClass(document.body, theme);
+
+    this._theme.next(theme); // emitir el nuevo tema "valor" a los suscriptores
+    console.log(`tema cambiado ${theme}`);
   }
 
 
