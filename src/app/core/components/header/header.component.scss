@@ -1,5 +1,6 @@
 .app-header {
-    background-color: var(--header-bg, #fff);
+    background-color: var(--element-bg-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
     padding: 1rem 0;
     transition: background-color 0.3s ease;
 
@@ -10,6 +11,9 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+    }
+    .logo {
+        color: var(--text-color);
     }
 
     .title {

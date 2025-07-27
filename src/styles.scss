@@ -1,4 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.scss */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Definición de variables de color para el tema claro
+body.light-theme {
+    --bg-color: #fafafa;
+    --element-bg-color: #ffffff;
+    --text-color: #111517;
+    --input-text-color: #858585;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+// Definición de variables de color para el tema oscuro
+body.dark-theme {
+    --bg-color: #202c37;
+    --element-bg-color: #2b3945;
+    --text-color: #ffffff;
+    --input-text-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.03);
+}
+
+// Estilos base que usan las variables
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; // Transición suave
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; // Asegurar una fuente base
+}

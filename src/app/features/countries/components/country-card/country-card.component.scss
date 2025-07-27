@@ -6,7 +6,7 @@
   
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); // Podemos dejar este o usar una variable también
     }
   }
   
@@ -14,7 +14,8 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
-    background-color: #ffffff;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    background-color: var(--element-bg-color);
     display: flex;
     flex-direction: column;
     height: 100%; // Importante para que todas las cards tengan la misma altura en un grid
@@ -46,11 +47,7 @@
         font-weight: 600;
         margin-top: 0;
         margin-bottom: 12px;
-        color: #2c3e50;
-        // Para truncar texto si es muy largo
-        // white-space: nowrap;
-        // overflow: hidden;
-        // text-overflow: ellipsis;
+        color: var(--text-color);
       }
   
       p {
