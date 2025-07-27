@@ -11,7 +11,7 @@ export class ThemeService {
 
   private renderer: Renderer2; //para añadir yquitar clases al body de forma dinámica
   private _theme = new BehaviorSubject<Theme>(this.getInitialTheme());
-  $theme = this._theme.asObservable();
+  theme$ = this._theme.asObservable();
 
   constructor( rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
@@ -19,9 +19,9 @@ export class ThemeService {
 
   private getInitialTheme(): Theme {
 
-    const storeTheme = localStorage.getItem('app-theme') as Theme;   // si hay un tema en el almacenamiento local
-    if(storeTheme) {
-      return storeTheme;
+    const storedTheme = localStorage.getItem('app-theme') as Theme;   // si hay un tema en el almacenamiento local
+    if(storedTheme) {
+      return storedTheme;
     }
     if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {    // si no hay un tema en el almacenamiento local, se utiliza el tema predeterminado
       return 'dark-theme';
@@ -41,8 +41,8 @@ export class ThemeService {
   private setTheme(theme: Theme ): void {
     localStorage.setItem('app-theme', theme);// guardar el tema en el localStorage
 
-    const previusTheme = theme === 'light-theme' ? 'dark-theme' : 'light-theme';// obtener el tema anterior 
-    this.renderer.removeClass(document.body, previusTheme);
+    const previousTheme = theme === 'light-theme' ? 'dark-theme' : 'light-theme';// obtener el tema anterior 
+    this.renderer.removeClass(document.body, previousTheme);
     this.renderer.addClass(document.body, theme);
 
     this._theme.next(theme); // emitir el nuevo tema "valor" a los suscriptores

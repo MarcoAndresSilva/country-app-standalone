@@ -14,10 +14,9 @@ export class AppComponent  implements OnInit {
 
   title = 'country-app-standalone';
 
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService) {}
 
-  }
-  ngOnInit() {
+  ngOnInit(): void {
     this.themeService.initializeTheme();
   }
 }
