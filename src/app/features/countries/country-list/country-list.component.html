@@ -1,7 +1,4 @@
 <div class="page-container">
-  <!-- <header class="page-header">
-  
-</header>    -->
 
   <div class="filters-container">
 
@@ -35,9 +32,19 @@
       Reset
     </button>
 
+    <mat-button-toggle-group [(ngModel)]="viewMode" aria-label="Vista">
+      <mat-button-toggle value="grid" aria-label="Vista de cuadrícula">
+        <mat-icon>grid_view</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="list" aria-label="Vista de lista">
+        <mat-icon>view_list</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+
   </div>
 
   <main class="content-area">
+
     <div *ngIf="isLoading" class="loading-indicator">
       <p>Cargando información de los países...</p>
       <!-- TO DO - LOADING INDICATOR -->
@@ -49,7 +56,9 @@
       <button (click)="loadCountries()">Reintentar</button>
     </div>
 
-    <div *ngIf="!isLoading && !error && countriesToDisplay.length > 0" class="countries-grid">
+    <div *ngIf="!isLoading && !error && countriesToDisplay.length > 0"
+        class="countries-container"
+        [ngClass]="{ 'grid-view': viewMode === 'grid', 'list-view': viewMode === 'list' }">
       <app-country-card
         *ngFor="let country of countriesToDisplay; trackBy: trackByCca3" 
         [country]="country"
