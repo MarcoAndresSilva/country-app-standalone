@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-country-list',
@@ -27,7 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonToggleModule
   ],
   templateUrl: './country-list.component.html',
   styleUrl: './country-list.component.scss'
@@ -44,8 +46,9 @@ export class CountryListComponent implements OnInit, OnDestroy {
   searchTerm: string = ''; // Para almacenar el texto de búsqueda
   selectedRegion: string = ''; // para el valor del mat-select
   regions: string[] = []; // para las opciones del <mat-select>
+  selectedCountry: Country | null = null; // Para almacenar el país seleccionado
 
-  selectedCountry: Country | null = null; 
+  viewMode: 'grid' | 'list' = 'grid';
 
   private destroy$ = new Subject<void>();
 
