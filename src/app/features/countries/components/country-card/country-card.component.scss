@@ -36,30 +36,40 @@
       }
     }
   
-    .card-content {
-      padding: 16px;
-      flex-grow: 1; // Permite que este contenedor crezca para llenar el espacio vertical
-      display: flex;
-      flex-direction: column;
-  
-      .card-title {
-        font-size: 1.25rem; 
-        font-weight: 600;
-        margin-top: 0;
-        margin-bottom: 12px;
-        color: var(--text-color);
+    :host-context(.list-view) .card {
+      flex-direction: row; // Cambia la dirección a horizontal
+      align-items: center; // Centra los elementos verticalmente
+      padding: 10px; // Añade un poco de padding general
+      
+      .card-flag-container {
+        width: 150px; // Ancho fijo para la bandera
+        height: 100px; // Altura fija
+        flex-shrink: 0; // Evita que la imagen se encoja
       }
-  
+
+      .card-content {
+        padding: 10px 20px;
+        display: grid; // Usar grid para alinear la información en columnas
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px 20px;
+        width: 100%; // Ocupa el resto del espacio
+
+      .card-title {
+          grid-column: 1 / -1; // El título ocupa todas las columnas
+          margin-bottom: 5px;
+      }
+
       p {
-        font-size: 0.875rem;
-        margin-bottom: 6px;
-        color: #34495e;
-        line-height: 1.5;
-  
+        margin-bottom: 0; // Quitar margen inferior en vista de lista
+        display: flex;
+        justify-content: space-between; // Alinea etiqueta y valor
+        border-bottom: 1px solid #f0f0f0; // Separador sutil
+        padding-bottom: 5px;
+
         .label {
-          font-weight: 500;
-          color: #7f8c8d;
+          color: #888;
         }
       }
     }
   }
+}

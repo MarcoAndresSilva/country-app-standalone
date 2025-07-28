@@ -37,25 +37,24 @@ $content-padding: 20px;
   height: 0;
   overflow: hidden;
 }
-
-// Contenedor del grid de países
-.countries-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 40px; // Un poco más de espacio entre cards
-
-  // Alinear con los filtros
+.countries-container {
+  // Estilos comunes para ambos modos de vista
   max-width: $content-max-width;
   margin: 0 auto;
   padding: 0 $content-padding;
 
-  .country-grid-item {
-    cursor: pointer;
-    &:focus-visible { // Mejor accesibilidad para navegación con teclado
-      outline: 2px solid dodgerblue;
-      outline-offset: 2px;
-      border-radius: 8px;
-    }
+  // Estilos para la vista de cuadrícula (Grid)
+  &.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px;
+  }
+
+  // Estilos para la vista de lista (List)
+  &.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
