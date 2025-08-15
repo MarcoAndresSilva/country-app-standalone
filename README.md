@@ -1,74 +1,83 @@
 # Explorador Global de Países 🌍 (Angular Standalone App)
 
-Una aplicación web interactiva y moderna construida con **Angular** y **TypeScript**, que permite a los usuarios explorar, buscar y filtrar información sobre países de todo el mundo. Este proyecto consume la [API pública de RestCountries](https://restcountries.com/).
+![Country App Screenshot](https://github.com/user-attachments/assets/d01dc75e-b04d-4d5a-bf28-c8bd3cea471e)
 
-### ✨ [Ver la aplicación en vivo]([ENLACE_A_VERCEL_O_NETLIFY]) ✨
+Una aplicación web interactiva y moderna construida con **Angular v17+**, que permite a los usuarios explorar, buscar y filtrar información sobre países de todo el mundo. Este proyecto, que consume la [API pública de RestCountries](https://restcountries.com/), fue desarrollado para demostrar la aplicación de la arquitectura de **componentes Standalone** y conceptos avanzados de desarrollo frontend.
 
-<img width="1122" height="363" alt="image" src="https://github.com/user-attachments/assets/8e83ac34-37a7-45f1-a44c-8c5d1bed806a" />
-
-<img width="1102" height="555" alt="image" src="https://github.com/user-attachments/assets/d01dc75e-b04d-4d5a-bf28-c8bd3cea471e" />
-
+### ✨ [Ver la aplicación en vivo](ENLACE_A_LA_DEMO_AQUI) ✨
 
 ---
 
-## Funcionalidades Implementadas
+## 🚀 Features (Funcionalidades Clave)
 
-*   **Dark Mode 🌓:** Interruptor para cambiar entre tema claro y oscuro. La preferencia se guarda en el `localStorage` del navegador.
-*   **Búsqueda Dinámica:** Búsqueda en tiempo real por nombre de país (común u oficial).
-*   **Filtrado por Región:** Menú desplegable para filtrar los países por su continente/región.
-*   **Vista de Cuadrícula / Lista 📊:** Interruptor para alternar entre una vista de cards en cuadrícula (`grid`) o una vista de lista detallada.
-*   **Modal Interactivo:** Al hacer clic en un país, se muestra un modal con información completa, incluyendo escudo, monedas, mapas y más.
-*   **Diseño Responsivo:** Interfaz completamente adaptable a dispositivos móviles, tablets y de escritorio.
-*   **Lazy Loading de Componentes e Imágenes:** Carga eficiente de la aplicación y de los recursos visuales.
-*   **Accesibilidad (a11y):** Consideraciones básicas para la navegación con teclado e interacción.
-
----
-
-## Stack Tecnológico y Conceptos Clave
-
-Este proyecto fue desarrollado para demostrar la aplicación de conceptos modernos de Angular y buenas prácticas de desarrollo frontend.
-
-*   **Framework:** Angular (v17+ o la que estés usando)
-*   **Arquitectura:**
-    *   **Componentes Standalone:** La aplicación está estructurada con componentes, directivas y pipes standalone, simplificando la gestión de dependencias y eliminando la necesidad de `NgModule`s.
-    *   **Arquitectura Basada en Componentes:** Clara separación de responsabilidades entre componentes (`HeaderComponent`, `CountryListComponent`, `CountryCardComponent`, `CountryModalComponent`).
-    *   **Servicios e Inyección de Dependencias (DI):** Uso de servicios singleton (`providedIn: 'root'`) para la lógica de negocio (obtención de datos, gestión del tema).
-*   **Manejo de Estado y Datos:**
-    *   **RxJS:** Uso de `Observables` para manejar peticiones HTTP asíncronas y `Subjects` (`BehaviorSubject`, `Subject`) para la gestión del estado reactivo (tema) y la desuscripción (`takeUntil`) para prevenir memory leaks.
-    *   **`HttpClient`:** Proveído de forma moderna con `provideHttpClient()` para el consumo de la API REST externa.
-*   **UI y Estilos:**
-    *   **Angular Material:** Utilización de componentes de alta calidad como `MatFormField`, `MatInput`, `MatSelect`, `MatButtonToggleGroup`, `MatIcon`, etc.
-    *   **SCSS:** Estilos modulares y mantenibles con variables, anidamiento y selectores avanzados como `:host-context`.
-    *   **Variables CSS para Theming:** Implementación de un sistema de tema claro/oscuro eficiente y escalable.
-*   **Rendimiento y Optimización:**
-    *   **Lazy Loading:** Carga diferida de componentes principales a través del Router (`loadComponent`).
-    *   **Change Detection `OnPush`:** Estrategia de detección de cambios `OnPush` en componentes "presentacionales" para minimizar re-renderizados innecesarios.
-    *   **`trackBy` en `*ngFor`:** Optimización del renderizado de listas grandes.
-*   **TypeScript:**
-    *   **Tipado Fuerte:** Uso de `interfaces` y `types` para definir modelos de datos robustos y seguros.
-*   **Animaciones:**
-    *   **`@angular/animations`:** Para transiciones suaves de entrada y salida en componentes dinámicos como el modal.
+-   **Modo Oscuro/Claro 🌓:** Interruptor para cambiar entre temas, con la preferencia guardada en `localStorage`.
+-   **Búsqueda Dinámica:** Campo de búsqueda en tiempo real que filtra países por nombre.
+-   **Filtrado por Región:** Menú desplegable para filtrar los resultados por continente.
+-   **Vistas Alternables:** Botones para cambiar la visualización de los países entre una cuadrícula de tarjetas y una lista detallada.
+-   **Modal de Detalles:** Al hacer clic en un país, se abre un modal interactivo con información completa, incluyendo mapas, monedas y más.
+-   **Diseño Responsivo:** Interfaz completamente adaptable a dispositivos móviles, tablets y de escritorio.
+-   **Optimización de Carga:** Uso de Lazy Loading para componentes e imágenes, asegurando un rendimiento óptimo.
 
 ---
 
-## Instalación y Ejecución Local 🛠️
+## 🛠️ Stack Tecnológico y Conceptos Aplicados
 
-1.  **Clonar el repositorio:**
+Este proyecto destaca por el uso de las últimas características de Angular y un enfoque en las mejores prácticas de desarrollo.
+
+### **Frontend & UI**
+
+![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![RxJS](https://img.shields.io/badge/rxjs-%23B7178C.svg?style=for-the-badge&logo=reactivex&logoColor=white)
+![Angular Material](https://img.shields.io/badge/angular_material-7B1FA2?style=for-the-badge&logo=angular&logoColor=white)
+![SCSS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+
+-   **Angular (v17+):** Framework principal, aprovechando al máximo la **arquitectura Standalone** para eliminar `NgModule`s y simplificar la estructura.
+-   **TypeScript:** Uso de tipado fuerte con `interfaces` y `types` para garantizar la integridad de los datos de la API.
+-   **RxJS:** Manejo de la asincronía de las peticiones HTTP con `Observables` y gestión de estado reactivo con `BehaviorSubject` para el sistema de temas.
+-   **Angular Material:** Librería de componentes para construir una interfaz de usuario de alta calidad y accesible.
+-   **SCSS:** Estilos modulares y escalables, con un sistema de theming basado en variables CSS para un cambio de tema eficiente.
+
+### **Arquitectura y Conceptos Clave**
+
+-   **Componentes Standalone:** Toda la aplicación está construida sobre la nueva API standalone, haciendo cada pieza de la UI independiente y reutilizable.
+-   **Inyección de Dependencias (DI):** Uso de la función `provideHttpClient()` y servicios `providedIn: 'root'` para una gestión de dependencias moderna.
+-   **Lazy Loading de Componentes:** Las rutas principales se cargan de forma perezosa (`loadComponent`) para mejorar el tiempo de carga inicial.
+-   **Estrategia de Detección de Cambios `OnPush`:** Implementada en componentes presentacionales para optimizar el rendimiento y minimizar los ciclos de re-renderizado.
+-   **Manejo de Ciclo de Vida y Desuscripción:** Uso del patrón `takeUntil` con `Subject` para una gestión robusta de las suscripciones, previniendo fugas de memoria.
+
+### **Herramientas de Desarrollo**
+
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+
+---
+
+## ⚙️ Instalación y Ejecución Local
+
+Sigue estos pasos para ejecutar el proyecto en tu máquina.
+
+1.  **Clona el repositorio:**
     ```bash
     git clone https://github.com/MarcoAndresSilva/country-app-standalone.git
     ```
-2.  **Navegar al directorio del proyecto:**
+
+2.  **Navega al directorio del proyecto:**
     ```bash
     cd country-app-standalone
     ```
-3.  **Instalar las dependencias:**
+
+3.  **Instala las dependencias:**
     ```bash
     npm install
     ```
-4.  **Ejecutar la aplicación en modo de desarrollo:**
+
+4.  **Ejecuta la aplicación:**
     ```bash
     ng serve -o
     ```
-    La aplicación estará disponible en `http://localhost:4200/`.
+
+La aplicación se abrirá automáticamente en `http://localhost:4200/`.
 
 ---
