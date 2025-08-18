@@ -4,7 +4,7 @@
 
 Una aplicación web interactiva y moderna construida con **Angular v17+**, que permite a los usuarios explorar, buscar y filtrar información sobre países de todo el mundo. Este proyecto, que consume la [API pública de RestCountries](https://restcountries.com/), fue desarrollado para demostrar la aplicación de la arquitectura de **componentes Standalone** y conceptos avanzados de desarrollo frontend.
 
-### ✨ [Ver la aplicación en vivo](ENLACE_A_LA_DEMO_AQUI) ✨
+### ✨ [Ver la aplicación en vivo](https://country-app-standalone.netlify.app) ✨
 
 ---
 
@@ -81,3 +81,4 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina.
 La aplicación se abrirá automáticamente en `http://localhost:4200/`.
 
 ---
+
