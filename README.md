@@ -78,7 +78,8 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina.
     ng serve -o
     ```
 
-La aplicación se abrirá automáticamente en `http://localhost:4200/`.
+La aplicación se abrirá automáticamente en `http://localhost:4200/`
 
 ---
+
 
